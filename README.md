@@ -12,6 +12,10 @@ The CNN model is designed with multiple convolutional layers, followed by max-po
 5. Fully Connected Layer 1: 512 units, ReLU activation
 6. Output Layer: 10 units, Softmax activation
 
+### Benchmarks - 75% Accuracy
+![image](https://github.com/user-attachments/assets/72ef8ac5-a24f-42f6-99dc-8a89c95defb5)
+
+
 ### CNN Kernel overview
 <img src="https://miro.medium.com/max/1070/1*Zx-ZMLKab7VOCQTxdZ1OAw.gif" style="max-width:400px;">
 
@@ -36,7 +40,7 @@ The model is trained using the following parameters:
 git clone https://github.com/swarajkumarsingh/cnn-cifar-classification-model.git
 ```
 
-2. Open google collab and open the model file
+2. Open Google Collab and open the model file
 
 ### Results
 The trained model achieves an accuracy of approximately 75% on the test set.
