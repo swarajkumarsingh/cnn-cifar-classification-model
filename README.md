@@ -11,6 +11,39 @@ The CNN model is designed with multiple convolutional layers, followed by max-po
 4. Max Pooling Layer 2: 2x2 pool size
 5. Fully Connected Layer 1: 512 units, ReLU activation
 6. Output Layer: 10 units, Softmax activation
+```
+class Cifar10CnnModel(ImageClassificationBase):
+    def __init__(self):
+        super().__init__()
+        self.network = nn.Sequential(
+            nn.Conv2d(3, 32, kernel_size=3, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2), # output: 64 x 16 x 16
+
+            nn.Conv2d(64, 128, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(128, 128, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2), # output: 128 x 8 x 8
+
+            nn.Conv2d(128, 256, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(),
+            nn.Conv2d(256, 256, kernel_size=3, stride=1, padding=1),
+            nn.ReLU(),
+            nn.MaxPool2d(2, 2), # output: 256 x 4 x 4
+
+            nn.Flatten(),
+            nn.Linear(256*4*4, 1024), # activation layer 1
+            nn.ReLU(),
+            nn.Linear(1024, 512), # activation layer 2
+            nn.ReLU(),
+            nn.Linear(512, 10)) # activation layer 3
+
+    def forward(self, xb):
+        return self.network(xb)
+```
 
 ### Benchmarks - 75% Accuracy
 ![image](https://github.com/user-attachments/assets/72ef8ac5-a24f-42f6-99dc-8a89c95defb5)
